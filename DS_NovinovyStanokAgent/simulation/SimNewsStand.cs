@@ -47,7 +47,7 @@ namespace simulation
 			_averageWaitingTimeOverall.AddSample(AverageWaitingTime.Mean());
 			_averageQueueLengthOverall.AddSample(AverageQueueLength.Mean());
 
-			if (CurrentReplication / ReplicationCount % 0.01 == 0)
+			if ( CurrentReplication % 10 == 0)
             {
 				Console.WriteLine($"Current replication: {CurrentReplication}");
 				Console.WriteLine($"	Avg Waiting time: {_averageWaitingTimeOverall.Mean()}");

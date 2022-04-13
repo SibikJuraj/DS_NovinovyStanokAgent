@@ -37,6 +37,8 @@ namespace managers
 		{
 			if (!_occupied)
             {
+				((SimNewsStand)MySim).AverageWaitingTime.AddSample(MySim.CurrentTime - ((Sprava)message).StartWaitingTime);
+
 				_occupied = true;
 				message.Addressee = MyAgent.ServiceAsistent;
 				StartContinualAssistant(message);
@@ -56,18 +58,13 @@ namespace managers
 			message.Code = Mc.ObsluhaZakaznika;
 			Response(message);
 
+			_occupied = false;
 			if (_queueCustomers.Count > 0)
             {
 				message = _queueCustomers.Dequeue();
-				((SimNewsStand)MySim).AverageWaitingTime.AddSample(MySim.CurrentTime - ((Sprava)message).StartWaitingTime);
-				message.Addressee = MyAgent.ServiceAsistent;
-				StartContinualAssistant(message);
+				ProcessObsluhaZakaznika(message);
 
 				((SimNewsStand)MySim).AverageQueueLength.AddSample(_queueCustomers.Count);
-			}
-			else
-            {
-				_occupied = false;
 			}
 		}
 

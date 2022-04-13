@@ -7,12 +7,14 @@ namespace simulation
 		public Sprava(Simulation sim) :
 			base(sim)
 		{
+			StartWaitingTime = sim.CurrentTime;
 		}
 
 		public Sprava(Sprava original) :
 			base(original)
 		{
 			// copy() is called in superclass
+			StartWaitingTime = original.StartWaitingTime;
 		}
 
 		override public MessageForm CreateCopy()

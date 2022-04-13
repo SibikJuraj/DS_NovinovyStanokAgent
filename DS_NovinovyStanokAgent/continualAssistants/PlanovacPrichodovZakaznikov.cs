@@ -11,7 +11,7 @@ namespace continualAssistants
 		public PlanovacPrichodovZakaznikov(int id, Simulation mySim, CommonAgent myAgent) :
 			base(id, mySim, myAgent)
 		{
-			_arrivalsGen = new OSPRNG.ExponentialRNG((double)(4 * 60));
+			_arrivalsGen = new OSPRNG.ExponentialRNG(240);
 		}
 
 		override public void PrepareReplication()
