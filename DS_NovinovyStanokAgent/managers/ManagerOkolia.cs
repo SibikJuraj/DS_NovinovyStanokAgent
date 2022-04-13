@@ -19,8 +19,6 @@ namespace managers
 			base.PrepareReplication();
 			// Setup component for the next replication
 
-
-
 			if (PetriNet != null)
 			{
 				PetriNet.Clear();
@@ -42,9 +40,14 @@ namespace managers
 		{
 			switch (message.Code)
 			{
+				case Mc.Start:
+					message.Addressee = MyAgent.ArrivalAsistent;
+					StartContinualAssistant(message);
+					break;
+
 				case Mc.PrichodZakaznika:
 					var sprava = new Sprava(MySim);
-					sprava.Addressee = MySim.FindAgent(SimId.AgentOkolia);
+					sprava.Addressee = MySim.FindAgent(SimId.AgentModelu);
 					sprava.Code = Mc.PrichodZakaznika;
 					Notice(sprava);
 					break;

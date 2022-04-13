@@ -6,25 +6,24 @@ namespace continualAssistants
 	//meta! id="13"
 	public class PlanovacPrichodovZakaznikov : Scheduler
 	{
-		private OSPRNG.ExponentialRNG ArrivalsGen { get; }
+		private OSPRNG.ExponentialRNG _arrivalsGen;
 
 		public PlanovacPrichodovZakaznikov(int id, Simulation mySim, CommonAgent myAgent) :
 			base(id, mySim, myAgent)
 		{
-			ArrivalsGen = new OSPRNG.ExponentialRNG((double)1 / (4 * 60));
+			_arrivalsGen = new OSPRNG.ExponentialRNG((double)(4 * 60));
 		}
 
 		override public void PrepareReplication()
 		{
 			base.PrepareReplication();
 			// Setup component for the next replication
-			GenerateArrival();
 		}
 
 		//meta! sender="AgentOkolia", id="14", type="Start"
 		public void ProcessStart(MessageForm message)
 		{
-			GenerateArrival();
+			GenerateArrival(message);
 		}
 
 		//meta! userInfo="Process messages defined in code", id="0"
@@ -38,7 +37,7 @@ namespace continualAssistants
 					sprava.Code = Mc.PrichodZakaznika;
 					Notice(sprava);
 
-					GenerateArrival();
+					GenerateArrival(message);
 
 					break;
 			}
@@ -67,13 +66,11 @@ namespace continualAssistants
 			}
 		}
 
-		private void GenerateArrival()
+		private void GenerateArrival(MessageForm message)
         {
-			var nextArrival = ArrivalsGen.Sample();
-			var sprava = new Sprava(MySim);
-			sprava.Addressee = MySim.FindAgent(MyAgent.Id);
-			sprava.Code = Mc.PrichodZakaznika;
-			Hold(nextArrival, sprava);
+			var nextArrival = _arrivalsGen.Sample();
+			message.Code = Mc.PrichodZakaznika;
+			Hold(nextArrival, message);
 		}
 	}
 }

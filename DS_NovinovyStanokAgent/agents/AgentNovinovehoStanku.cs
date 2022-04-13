@@ -7,10 +7,12 @@ namespace agents
 	//meta! id="3"
 	public class AgentNovinovehoStanku : Agent
 	{
+		public ProcesObsluhyZakaznika ServiceAsistent { get; }
 		public AgentNovinovehoStanku(int id, Simulation mySim, Agent parent) :
 			base(id, mySim, parent)
 		{
 			Init();
+			ServiceAsistent = new ProcesObsluhyZakaznika(id, mySim, this);
 		}
 
 		override public void PrepareReplication()

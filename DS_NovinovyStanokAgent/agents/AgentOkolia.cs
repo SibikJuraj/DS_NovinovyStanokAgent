@@ -7,21 +7,20 @@ namespace agents
 	//meta! id="2"
 	public class AgentOkolia : Agent
 	{
-		public PlanovacPrichodovZakaznikov ArrivalAsistent { get; private set; }
+		public PlanovacPrichodovZakaznikov ArrivalAsistent { get; }
 
 		public AgentOkolia(int id, Simulation mySim, Agent parent) :
 			base(id, mySim, parent)
 		{
 			Init();
 			ArrivalAsistent = new PlanovacPrichodovZakaznikov(Id, MySim, this);
+
+			AddOwnMessage(Mc.PrichodZakaznika);
 		}
 
 		override public void PrepareReplication()
 		{
 			base.PrepareReplication();
-
-			MyManager.PrepareReplication();
-			ArrivalAsistent.PrepareReplication();
 		}
 
 		//meta! userInfo="Generated code: do not modify", tag="begin"

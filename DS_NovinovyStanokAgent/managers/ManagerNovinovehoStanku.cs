@@ -9,22 +9,22 @@ namespace managers
 	//meta! id="3"
 	public class ManagerNovinovehoStanku : Manager
 	{
-		private Queue<Sprava> queueCustomers_;
-		private bool occupied_;
+		private bool _occupied;
+		private Queue<Sprava> _queueCustomers;
 
 		public ManagerNovinovehoStanku(int id, Simulation mySim, Agent myAgent) :
 			base(id, mySim, myAgent)
 		{
 			Init();
-			queueCustomers_ = new Queue<Sprava>();
+			_queueCustomers = new Queue<Sprava>();
 		}
 
 		override public void PrepareReplication()
 		{
 			base.PrepareReplication();
 			// Setup component for the next replication
-			occupied_ = false;
-			queueCustomers_.Clear();
+			_occupied = false;
+			_queueCustomers.Clear();
 
 			if (PetriNet != null)
 			{
@@ -35,12 +35,40 @@ namespace managers
 		//meta! sender="AgentModelu", id="10", type="Request"
 		public void ProcessObsluhaZakaznika(MessageForm message)
 		{
+			if (!_occupied)
+            {
+				_occupied = true;
+				message.Addressee = MyAgent.ServiceAsistent;
+				StartContinualAssistant(message);
+			}
+			else
+            {
+				((Sprava)message).StartWaitingTime = MySim.CurrentTime;
+				_queueCustomers.Enqueue((Sprava)message);
 
+				((SimNewsStand)MySim).AverageQueueLength.AddSample(_queueCustomers.Count);
+			}
 		}
 
 		//meta! sender="ProcesObsluhyZakaznika", id="17", type="Finish"
 		public void ProcessFinish(MessageForm message)
 		{
+			message.Code = Mc.ObsluhaZakaznika;
+			Response(message);
+
+			if (_queueCustomers.Count > 0)
+            {
+				message = _queueCustomers.Dequeue();
+				((SimNewsStand)MySim).AverageWaitingTime.AddSample(MySim.CurrentTime - ((Sprava)message).StartWaitingTime);
+				message.Addressee = MyAgent.ServiceAsistent;
+				StartContinualAssistant(message);
+
+				((SimNewsStand)MySim).AverageQueueLength.AddSample(_queueCustomers.Count);
+			}
+			else
+            {
+				_occupied = false;
+			}
 		}
 
 		//meta! userInfo="Process messages defined in code", id="0"

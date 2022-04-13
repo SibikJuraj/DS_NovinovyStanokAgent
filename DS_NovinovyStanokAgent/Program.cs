@@ -7,7 +7,7 @@ namespace DS_NovinovyStanokAgent
     {
         static void Main(string[] args)
         {
-            new SimNewsStand();
+            new SimNewsStand().Simulate(10, 10_000_000);
         }
     }
 }

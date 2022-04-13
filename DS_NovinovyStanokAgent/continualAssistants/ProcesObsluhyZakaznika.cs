@@ -1,14 +1,19 @@
 using OSPABA;
 using simulation;
 using agents;
+using managers;
+
 namespace continualAssistants
 {
 	//meta! id="16"
 	public class ProcesObsluhyZakaznika : Process
 	{
+		private OSPRNG.UniformContinuousRNG _serviceLengthGen;
+
 		public ProcesObsluhyZakaznika(int id, Simulation mySim, CommonAgent myAgent) :
 			base(id, mySim, myAgent)
 		{
+			_serviceLengthGen = new OSPRNG.UniformContinuousRNG(120, 240);
 		}
 
 		override public void PrepareReplication()
@@ -20,6 +25,8 @@ namespace continualAssistants
 		//meta! sender="AgentNovinovehoStanku", id="17", type="Start"
 		public void ProcessStart(MessageForm message)
 		{
+			message.Code = Mc.Finish;
+			Hold(_serviceLengthGen.Sample(), message);
 		}
 
 		//meta! userInfo="Process messages defined in code", id="0"
@@ -27,6 +34,10 @@ namespace continualAssistants
 		{
 			switch (message.Code)
 			{
+				case Mc.Finish:
+					AssistantFinished(message);
+
+					break;
 			}
 		}
 

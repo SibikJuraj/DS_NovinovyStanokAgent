@@ -3,6 +3,7 @@ namespace simulation
 {
 	public class Sprava : MessageForm
 	{
+		public double StartWaitingTime { get; set; }
 		public Sprava(Simulation sim) :
 			base(sim)
 		{
