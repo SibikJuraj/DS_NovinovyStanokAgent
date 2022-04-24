@@ -32,10 +32,8 @@ namespace continualAssistants
 			switch (message.Code)
 			{
 				case Mc.PrichodZakaznika:
-					var sprava = new Sprava(MySim);
-					sprava.Addressee = MyAgent;
-					sprava.Code = Mc.PrichodZakaznika;
-					Notice(sprava);
+					Sprava sprava = message.CreateCopy() as Sprava;
+					AssistantFinished(sprava);
 
 					GenerateArrival(message);
 

@@ -45,8 +45,8 @@ namespace managers
 			}
 			else
             {
-				((Sprava)message).StartWaitingTime = MySim.CurrentTime;
-				_queueCustomers.Enqueue((Sprava)message);
+				(message as Sprava).StartWaitingTime = MySim.CurrentTime;
+				_queueCustomers.Enqueue((message as Sprava));
 
 				((SimNewsStand)MySim).AverageQueueLength.AddSample(_queueCustomers.Count);
 			}
@@ -63,7 +63,6 @@ namespace managers
             {
 				message = _queueCustomers.Dequeue();
 				ProcessObsluhaZakaznika(message);
-
 				((SimNewsStand)MySim).AverageQueueLength.AddSample(_queueCustomers.Count);
 			}
 		}

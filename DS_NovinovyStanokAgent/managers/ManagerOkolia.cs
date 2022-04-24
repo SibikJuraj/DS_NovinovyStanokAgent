@@ -33,6 +33,9 @@ namespace managers
 		//meta! sender="PlanovacPrichodovZakaznikov", id="14", type="Finish"
 		public void ProcessFinish(MessageForm message)
 		{
+			message.Addressee = MyAgent.Parent;
+			message.Code = Mc.PrichodZakaznika;
+			Notice(message);
 		}
 
 		//meta! userInfo="Process messages defined in code", id="0"
@@ -46,10 +49,9 @@ namespace managers
 					break;
 
 				case Mc.PrichodZakaznika:
-					var sprava = new Sprava(MySim);
-					sprava.Addressee = MySim.FindAgent(SimId.AgentModelu);
-					sprava.Code = Mc.PrichodZakaznika;
-					Notice(sprava);
+					message.Addressee = MyAgent.Parent;
+					message.Code = Mc.PrichodZakaznika;
+					Notice(message);
 					break;
 			}
 		}

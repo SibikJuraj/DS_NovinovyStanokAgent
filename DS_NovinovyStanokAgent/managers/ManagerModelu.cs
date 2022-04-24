@@ -27,10 +27,10 @@ namespace managers
 		//meta! sender="AgentOkolia", id="9", type="Notice"
 		public void ProcessPrichodZakaznika(MessageForm message)
 		{
-			var sprava = new Sprava(MySim);
-			sprava.Addressee = MySim.FindAgent(SimId.AgentNovinovehoStanku);
-			sprava.Code = Mc.ObsluhaZakaznika;
-			Request(sprava);
+			message.Addressee = MySim.FindAgent(SimId.AgentNovinovehoStanku);
+			message.Code = Mc.ObsluhaZakaznika;
+			(message as Sprava).StartWaitingTime = MySim.CurrentTime;
+			Request(message);
 		}
 
 		//meta! sender="AgentNovinovehoStanku", id="10", type="Response"

@@ -26,6 +26,7 @@ namespace simulation
 		{
 			base.Copy(message);
 			Sprava original = (Sprava)message;
+			StartWaitingTime = original.StartWaitingTime;
 			// Copy attributes
 		}
 	}
