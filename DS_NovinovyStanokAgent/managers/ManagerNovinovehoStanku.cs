@@ -40,7 +40,7 @@ namespace managers
 				((SimNewsStand)MySim).AverageWaitingTime.AddSample(MySim.CurrentTime - ((Sprava)message).StartWaitingTime);
 
 				_occupied = true;
-				message.Addressee = MyAgent.ServiceAsistent;
+				message.Addressee = MyAgent.FindAssistant(SimId.ProcesObsluhyZakaznika);
 				StartContinualAssistant(message);
 			}
 			else
