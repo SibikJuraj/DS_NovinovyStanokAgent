@@ -65,12 +65,12 @@ namespace managers
 		{
 			switch (message.Code)
 			{
-			case Mc.OdchodZakaznika:
-				ProcessOdchodZakaznika(message);
-			break;
-
 			case Mc.Finish:
 				ProcessFinish(message);
+			break;
+
+			case Mc.OdchodZakaznika:
+				ProcessOdchodZakaznika(message);
 			break;
 
 			default:

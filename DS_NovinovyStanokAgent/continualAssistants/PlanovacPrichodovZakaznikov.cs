@@ -32,7 +32,7 @@ namespace continualAssistants
 			switch (message.Code)
 			{
 				case Mc.PrichodZakaznika:
-					Sprava sprava = message.CreateCopy() as Sprava;
+					MyMessage sprava = message.CreateCopy() as MyMessage;
 					AssistantFinished(sprava);
 
 					GenerateArrival(message);

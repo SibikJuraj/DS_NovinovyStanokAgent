@@ -4,10 +4,10 @@ using managers;
 using continualAssistants;
 namespace agents
 {
-	//meta! id="1"
-	public class AgentModelu : Agent
+	//meta! id="20"
+	public class Agent1 : Agent
 	{
-		public AgentModelu(int id, Simulation mySim, Agent parent) :
+		public Agent1(int id, Simulation mySim, Agent parent) :
 			base(id, mySim, parent)
 		{
 			Init();
@@ -16,15 +16,13 @@ namespace agents
 		override public void PrepareReplication()
 		{
 			base.PrepareReplication();
-
+			// Setup component for the next replication
 		}
 
 		//meta! userInfo="Generated code: do not modify", tag="begin"
 		private void Init()
 		{
-			new ManagerModelu(SimId.ManagerModelu, MySim, this);
-			AddOwnMessage(Mc.PrichodZakaznika);
-			AddOwnMessage(Mc.ObsluhaZakaznika);
+			new Manager1(SimId.Manager1, MySim, this);
 		}
 		//meta! tag="end"
 	}

@@ -29,14 +29,14 @@ namespace managers
 		{
 			message.Addressee = MySim.FindAgent(SimId.AgentNovinovehoStanku);
 			message.Code = Mc.ObsluhaZakaznika;
-			(message as Sprava).StartWaitingTime = MySim.CurrentTime;
+			(message as MyMessage).StartWaitingTime = MySim.CurrentTime;
 			Request(message);
 		}
 
 		//meta! sender="AgentNovinovehoStanku", id="10", type="Response"
 		public void ProcessObsluhaZakaznika(MessageForm message)
 		{
-			var sprava = new Sprava(MySim);
+			var sprava = new MyMessage(MySim);
 			sprava.Addressee = MySim.FindAgent(SimId.AgentOkolia);
 			sprava.Code = Mc.OdchodZakaznika;
 			Notice(sprava);

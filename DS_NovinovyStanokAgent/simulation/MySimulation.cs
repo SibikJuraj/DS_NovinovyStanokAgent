@@ -4,13 +4,13 @@ using System;
 
 namespace simulation
 {
-	public class SimNewsStand : Simulation
+	public class MySimulation : Simulation
 	{
 		private OSPStat.Stat _averageWaitingTimeOverall;
 		private OSPStat.Stat _averageQueueLengthOverall;
 		public OSPStat.Stat AverageWaitingTime { get; private set; }
 		public OSPStat.WStat AverageQueueLength { get; private set; }
-		public SimNewsStand()
+		public MySimulation()
 		{
 			Init();
 			_averageWaitingTimeOverall = new OSPStat.Stat();
@@ -32,7 +32,7 @@ namespace simulation
 			AverageWaitingTime = new OSPStat.Stat();
 			AverageQueueLength = new OSPStat.WStat(this);
 
-			Sprava message = new Sprava(this);
+			MyMessage message = new MyMessage(this);
 			message.Addressee = AgentOkolia;
 			message.Code = Mc.Start;
 

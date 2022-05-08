@@ -10,13 +10,13 @@ namespace managers
 	public class ManagerNovinovehoStanku : Manager
 	{
 		private bool _occupied;
-		private Queue<Sprava> _queueCustomers;
+		private Queue<MyMessage> _queueCustomers;
 
 		public ManagerNovinovehoStanku(int id, Simulation mySim, Agent myAgent) :
 			base(id, mySim, myAgent)
 		{
 			Init();
-			_queueCustomers = new Queue<Sprava>();
+			_queueCustomers = new Queue<MyMessage>();
 		}
 
 		override public void PrepareReplication()
@@ -37,7 +37,7 @@ namespace managers
 		{
 			if (!_occupied)
             {
-				((SimNewsStand)MySim).AverageWaitingTime.AddSample(MySim.CurrentTime - ((Sprava)message).StartWaitingTime);
+				((MySimulation)MySim).AverageWaitingTime.AddSample(MySim.CurrentTime - ((MyMessage)message).StartWaitingTime);
 
 				_occupied = true;
 				message.Addressee = MyAgent.FindAssistant(SimId.ProcesObsluhyZakaznika);
@@ -45,10 +45,10 @@ namespace managers
 			}
 			else
             {
-				(message as Sprava).StartWaitingTime = MySim.CurrentTime;
-				_queueCustomers.Enqueue((message as Sprava));
+				(message as MyMessage).StartWaitingTime = MySim.CurrentTime;
+				_queueCustomers.Enqueue((message as MyMessage));
 
-				((SimNewsStand)MySim).AverageQueueLength.AddSample(_queueCustomers.Count);
+				((MySimulation)MySim).AverageQueueLength.AddSample(_queueCustomers.Count);
 			}
 		}
 
@@ -63,7 +63,7 @@ namespace managers
             {
 				message = _queueCustomers.Dequeue();
 				ProcessObsluhaZakaznika(message);
-				((SimNewsStand)MySim).AverageQueueLength.AddSample(_queueCustomers.Count);
+				((MySimulation)MySim).AverageQueueLength.AddSample(_queueCustomers.Count);
 			}
 		}
 

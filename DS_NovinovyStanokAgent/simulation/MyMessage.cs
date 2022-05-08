@@ -1,16 +1,16 @@
 using OSPABA;
 namespace simulation
 {
-	public class Sprava : MessageForm
+	public class MyMessage : MessageForm
 	{
 		public double StartWaitingTime { get; set; }
-		public Sprava(Simulation sim) :
+		public MyMessage(Simulation sim) :
 			base(sim)
 		{
 			StartWaitingTime = sim.CurrentTime;
 		}
 
-		public Sprava(Sprava original) :
+		public MyMessage(MyMessage original) :
 			base(original)
 		{
 			// copy() is called in superclass
@@ -19,13 +19,13 @@ namespace simulation
 
 		override public MessageForm CreateCopy()
 		{
-			return new Sprava(this);
+			return new MyMessage(this);
 		}
 
 		override protected void Copy(MessageForm message)
 		{
 			base.Copy(message);
-			Sprava original = (Sprava)message;
+			MyMessage original = (MyMessage)message;
 			StartWaitingTime = original.StartWaitingTime;
 			// Copy attributes
 		}
