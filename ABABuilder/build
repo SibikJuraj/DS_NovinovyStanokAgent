@@ -2,6 +2,31 @@
 <ABAsim>
   <Agents>
     <Agent>
+      <SimId>4</SimId>
+      <InternalId>20</InternalId>
+      <Name>Agent1</Name>
+      <Bounds>1792,820,180,180</Bounds>
+      <Reasoner>Manager1</Reasoner>
+      <UsePetriNet>false</UsePetriNet>
+    </Agent>
+    <Agent>
+      <SimId>2</SimId>
+      <InternalId>2</InternalId>
+      <Name>AgentOkolia</Name>
+      <Bounds>767,868,180,180</Bounds>
+      <Reasoner>ManagerOkolia</Reasoner>
+      <ReasonerBounds>74,25,32,25</ReasonerBounds>
+      <UsePetriNet>false</UsePetriNet>
+      <Components>
+        <Scheduler>
+          <SimId>1001</SimId>
+          <InternalId>13</InternalId>
+          <Name>PlanovacPrichodovZakaznikov</Name>
+          <Bounds>75,109,35,13</Bounds>
+        </Scheduler>
+      </Components>
+    </Agent>
+    <Agent>
       <SimId>3</SimId>
       <InternalId>3</InternalId>
       <Name>AgentNovinovehoStanku</Name>
@@ -27,23 +52,6 @@
       <ReasonerBounds>74,25,32,25</ReasonerBounds>
       <UsePetriNet>false</UsePetriNet>
     </Agent>
-    <Agent>
-      <SimId>2</SimId>
-      <InternalId>2</InternalId>
-      <Name>AgentOkolia</Name>
-      <Bounds>767,868,180,180</Bounds>
-      <Reasoner>ManagerOkolia</Reasoner>
-      <ReasonerBounds>74,25,32,25</ReasonerBounds>
-      <UsePetriNet>false</UsePetriNet>
-      <Components>
-        <Scheduler>
-          <SimId>1001</SimId>
-          <InternalId>13</InternalId>
-          <Name>PlanovacPrichodovZakaznikov</Name>
-          <Bounds>75,109,35,13</Bounds>
-        </Scheduler>
-      </Components>
-    </Agent>
   </Agents>
   <Messages>
     <Message>
@@ -56,6 +64,12 @@
       <InternalId>4</InternalId>
       <Type>Parent</Type>
       <Source>2</Source>
+      <Destination>1</Destination>
+    </Message>
+    <Message>
+      <InternalId>21</InternalId>
+      <Type>Parent</Type>
+      <Source>20</Source>
       <Destination>1</Destination>
     </Message>
     <Message>
@@ -95,5 +109,5 @@
       <Destination>13</Destination>
     </Message>
   </Messages>
-  <IID>19</IID>
+  <IID>22</IID>
 </ABAsim>
