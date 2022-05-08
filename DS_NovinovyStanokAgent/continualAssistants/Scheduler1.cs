@@ -3,10 +3,10 @@ using simulation;
 using agents;
 namespace continualAssistants
 {
-	//meta! id="30"
-	public class Process1 : Process
+	//meta! id="34"
+	public class Scheduler1 : Scheduler
 	{
-		public Process1(int id, Simulation mySim, CommonAgent myAgent) :
+		public Scheduler1(int id, Simulation mySim, CommonAgent myAgent) :
 			base(id, mySim, myAgent)
 		{
 		}
@@ -17,7 +17,7 @@ namespace continualAssistants
 			// Setup component for the next replication
 		}
 
-		//meta! sender="Agent1", id="31", type="Start"
+		//meta! sender="Agent2", id="35", type="Start"
 		public void ProcessStart(MessageForm message)
 		{
 		}
@@ -45,11 +45,11 @@ namespace continualAssistants
 			}
 		}
 		//meta! tag="end"
-		public new Agent1 MyAgent
+		public new Agent2 MyAgent
 		{
 			get
 			{
-				return (Agent1)base.MyAgent;
+				return (Agent2)base.MyAgent;
 			}
 		}
 	}

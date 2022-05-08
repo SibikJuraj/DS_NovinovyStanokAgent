@@ -65,9 +65,18 @@
       <SimId>5</SimId>
       <InternalId>23</InternalId>
       <Name>Agent2</Name>
-      <Bounds>2050,1110,180,180</Bounds>
+      <Bounds>2050,1107,180,180</Bounds>
       <Reasoner>Manager2</Reasoner>
+      <ReasonerBounds>74,25,32,25</ReasonerBounds>
       <UsePetriNet>false</UsePetriNet>
+      <Components>
+        <Scheduler>
+          <SimId>1004</SimId>
+          <InternalId>34</InternalId>
+          <Name>Scheduler1</Name>
+          <Bounds>20,82,35,13</Bounds>
+        </Scheduler>
+      </Components>
     </Agent>
   </Agents>
   <Messages>
@@ -76,6 +85,12 @@
       <Type>StartFinish</Type>
       <Source>3</Source>
       <Destination>16</Destination>
+    </Message>
+    <Message>
+      <InternalId>35</InternalId>
+      <Type>StartFinish</Type>
+      <Source>23</Source>
+      <Destination>34</Destination>
     </Message>
     <Message>
       <InternalId>4</InternalId>
@@ -146,5 +161,5 @@
       <Destination>30</Destination>
     </Message>
   </Messages>
-  <IID>32</IID>
+  <IID>37</IID>
 </ABAsim>

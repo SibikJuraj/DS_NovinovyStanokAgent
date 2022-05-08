@@ -23,6 +23,7 @@ namespace agents
 		private void Init()
 		{
 			new Manager2(SimId.Manager2, MySim, this);
+			new Scheduler1(SimId.Scheduler1, MySim, this);
 			AddOwnMessage(Mc.Notice);
 		}
 		//meta! tag="end"

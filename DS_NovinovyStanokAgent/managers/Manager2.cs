@@ -37,6 +37,11 @@ namespace managers
 		{
 		}
 
+		//meta! sender="Scheduler1", id="35", type="Finish"
+		public void ProcessFinish(MessageForm message)
+		{
+		}
+
 		//meta! userInfo="Generated code: do not modify", tag="begin"
 		public void Init()
 		{
@@ -46,6 +51,10 @@ namespace managers
 		{
 			switch (message.Code)
 			{
+			case Mc.Finish:
+				ProcessFinish(message);
+			break;
+
 			case Mc.Notice:
 				ProcessNotice(message);
 			break;
