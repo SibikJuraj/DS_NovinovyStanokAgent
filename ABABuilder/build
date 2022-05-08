@@ -52,6 +52,14 @@
       <ReasonerBounds>74,25,32,25</ReasonerBounds>
       <UsePetriNet>false</UsePetriNet>
     </Agent>
+    <Agent>
+      <SimId>5</SimId>
+      <InternalId>23</InternalId>
+      <Name>Agent2</Name>
+      <Bounds>2050,1110,180,180</Bounds>
+      <Reasoner>Manager2</Reasoner>
+      <UsePetriNet>false</UsePetriNet>
+    </Agent>
   </Agents>
   <Messages>
     <Message>
@@ -87,6 +95,12 @@
       <Destination>2</Destination>
     </Message>
     <Message>
+      <InternalId>24</InternalId>
+      <Type>Parent</Type>
+      <Source>23</Source>
+      <Destination>20</Destination>
+    </Message>
+    <Message>
       <SimId>1002</SimId>
       <InternalId>9</InternalId>
       <Name>PrichodZakaznika</Name>
@@ -103,11 +117,19 @@
       <Destination>3</Destination>
     </Message>
     <Message>
+      <SimId>1004</SimId>
+      <InternalId>26</InternalId>
+      <Name>Notice</Name>
+      <Type>Notice</Type>
+      <Source>20</Source>
+      <Destination>23</Destination>
+    </Message>
+    <Message>
       <InternalId>14</InternalId>
       <Type>StartFinish</Type>
       <Source>2</Source>
       <Destination>13</Destination>
     </Message>
   </Messages>
-  <IID>22</IID>
+  <IID>27</IID>
 </ABAsim>

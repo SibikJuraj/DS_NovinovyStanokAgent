@@ -71,6 +71,7 @@ namespace simulation
 			AgentOkolia = new AgentOkolia(SimId.AgentOkolia, this, AgentModelu);
 			AgentNovinovehoStanku = new AgentNovinovehoStanku(SimId.AgentNovinovehoStanku, this, AgentModelu);
 			Agent1 = new Agent1(SimId.Agent1, this, AgentModelu);
+			Agent2 = new Agent2(SimId.Agent2, this, Agent1);
 		}
 		public AgentModelu AgentModelu
 		{ get; set; }
@@ -79,6 +80,8 @@ namespace simulation
 		public AgentNovinovehoStanku AgentNovinovehoStanku
 		{ get; set; }
 		public Agent1 Agent1
+		{ get; set; }
+		public Agent2 Agent2
 		{ get; set; }
 		//meta! tag="end"
 	}

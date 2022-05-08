@@ -7,6 +7,7 @@ namespace simulation
 		public const int OdchodZakaznika = 1001;
 		public const int PrichodZakaznika = 1002;
 		public const int ObsluhaZakaznika = 1003;
+		public const int Notice = 1004;
 		//meta! tag="end"
 
 		// 1..1000 range reserved for user
