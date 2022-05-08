@@ -1,27 +1,25 @@
 using OSPABA;
 using simulation;
 using agents;
-using continualAssistants;
-namespace managers
+namespace continualAssistants
 {
-	//meta! id="20"
-	public class Manager1 : Manager
+	//meta! id="30"
+	public class Process1 : Process
 	{
-		public Manager1(int id, Simulation mySim, Agent myAgent) :
+		public Process1(int id, Simulation mySim, CommonAgent myAgent) :
 			base(id, mySim, myAgent)
 		{
-			Init();
 		}
 
 		override public void PrepareReplication()
 		{
 			base.PrepareReplication();
 			// Setup component for the next replication
+		}
 
-			if (PetriNet != null)
-			{
-				PetriNet.Clear();
-			}
+		//meta! sender="Agent1", id="31", type="Start"
+		public void ProcessStart(MessageForm message)
+		{
 		}
 
 		//meta! userInfo="Process messages defined in code", id="0"
@@ -32,22 +30,13 @@ namespace managers
 			}
 		}
 
-		//meta! sender="Process1", id="31", type="Finish"
-		public void ProcessFinish(MessageForm message)
-		{
-		}
-
 		//meta! userInfo="Generated code: do not modify", tag="begin"
-		public void Init()
-		{
-		}
-
 		override public void ProcessMessage(MessageForm message)
 		{
 			switch (message.Code)
 			{
-			case Mc.Finish:
-				ProcessFinish(message);
+			case Mc.Start:
+				ProcessStart(message);
 			break;
 
 			default:

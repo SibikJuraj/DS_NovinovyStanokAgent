@@ -16,6 +16,7 @@ namespace simulation
 		public const int Manager2 = 105;
 		public const int ProcesObsluhyZakaznika = 1002;
 		public const int PlanovacPrichodovZakaznikov = 1001;
+		public const int Process1 = 1003;
 		//meta! tag="end"
 	}
 }

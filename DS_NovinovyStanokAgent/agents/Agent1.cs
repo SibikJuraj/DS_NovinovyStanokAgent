@@ -23,6 +23,7 @@ namespace agents
 		private void Init()
 		{
 			new Manager1(SimId.Manager1, MySim, this);
+			new Process1(SimId.Process1, MySim, this);
 		}
 		//meta! tag="end"
 	}

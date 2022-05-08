@@ -7,7 +7,16 @@
       <Name>Agent1</Name>
       <Bounds>1792,820,180,180</Bounds>
       <Reasoner>Manager1</Reasoner>
+      <ReasonerBounds>74,25,32,25</ReasonerBounds>
       <UsePetriNet>false</UsePetriNet>
+      <Components>
+        <Process>
+          <SimId>1003</SimId>
+          <InternalId>30</InternalId>
+          <Name>Process1</Name>
+          <Bounds>36,82,35,18</Bounds>
+        </Process>
+      </Components>
     </Agent>
     <Agent>
       <SimId>2</SimId>
@@ -130,6 +139,12 @@
       <Source>2</Source>
       <Destination>13</Destination>
     </Message>
+    <Message>
+      <InternalId>31</InternalId>
+      <Type>StartFinish</Type>
+      <Source>20</Source>
+      <Destination>30</Destination>
+    </Message>
   </Messages>
-  <IID>27</IID>
+  <IID>32</IID>
 </ABAsim>
